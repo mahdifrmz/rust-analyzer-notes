@@ -1,5 +1,9 @@
 # Summary of explaining RA02: vfs
 
+> You can watch actual video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/SaSULKoSlWI/1.jpg)](https://www.youtube.com/watch?v=SaSULKoSlWI&list=PLhb66M_x9UmrqXhQuIpWC5VgTdrGxMx3y)
+
 ## Paths
 
 The `Path` crate provides 4 structs for working with paths: `AbsPathBuf`, `AbsPath`, `RelPathBuf` and `RelPath` which correspond to `std::fs::PathBuf` and `std::fs::Path`.
