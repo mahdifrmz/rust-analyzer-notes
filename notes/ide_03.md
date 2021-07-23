@@ -1,3 +1,9 @@
+# Summary of explaining RA03: ide
+
+> You can watch the video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/5l31PsZJ2Cc/1.jpg)](https://www.youtube.com/watch?v=5l31PsZJ2Cc)
+
 ## IDE
 The ide crate is the facsade that contains the Rust ANalyzer API. The general workflow of this crate is sort of similar to vfs; as you can apply changes to an `AnalysisHost` instance, which is a snapshot at a single time and later derive an `Analysis` data from that host. This analysis instance can be used for executing an specific ide query about the state at that time.
 
