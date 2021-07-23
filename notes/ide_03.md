@@ -1,0 +1,5 @@
+## IDE
+the ide crate is the facsade that contains the Rust ANalyzer API. the general workflow of this crate is sort of similar to vfs; as you can apply changes to an `AnalysisHost` instance, which is a snapshot at a single time and later derive an `Analysis` data from that host. this analysis instance can be used for executing an specific ide query about the state at that time.
+
+## Change
+a `Change` describes the change done to the files. this includes the set of file contents from the vfs (which is shared using an `Arc<String>` for sharing from the vfs-notifier thread) and the list of `FileSet`s created after [partitioning](vfs_02.md). it also contains the `CrateGraph` for storing the dependency between the crates (link will be put later). This information provides Rust Analyzer with the ability to handle multi-crate and multi-workspace projects.
