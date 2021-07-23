@@ -9,3 +9,13 @@ The `Analysis`struct is a read-only type which can be queried about the current 
 
 ## Main Loop
 The main loop (which will be covered in it's own notes) will listen for events and when a change is made to the vfs, it will apply those changes to the `AnalysisHost`. After that, it will spawn a bunch of background threads and moves `Analysis` instances to these threads to dervie information about the current state. As these threads want to read the same data at the same, they have to be immutable. But there's another issue: if in the middle of doing analysis by the worker thread, a change happens to the vfs and the mainloop wants to apply those changes to the shared reference of the state, this can't be done while those immutable refernces of Analysis insatnces in other threads are still Alive. The solution is:
+
+## Cancellable
+The result of each query executed on an `Analysis` is a Cancellable.
+```
+pub type Cancellable<T> = Result<T, Cancelled>;
+```
+After the main loop gets aware of the new change, it'll call cancel on all working threads, as the result of their computation is not needed anymore. this will delay the call to apply change, untill all refernces to the state have been released and then the change will be applied and analysis will start again.
+
+## IDE is boundry!
+Rust Analyzer is a constantly evolving project with many crates. the boundries between these crates is always supposed to be as simple as possible (like the `Analysis` API methods). The reason for this is that if anything in another crate changes, we will not have to change other crates' implementations.
