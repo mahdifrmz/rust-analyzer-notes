@@ -1,8 +1,8 @@
 ## IDE
-the ide crate is the facsade that contains the Rust ANalyzer API. the general workflow of this crate is sort of similar to vfs; as you can apply changes to an `AnalysisHost` instance, which is a snapshot at a single time and later derive an `Analysis` data from that host. this analysis instance can be used for executing an specific ide query about the state at that time.
+The ide crate is the facsade that contains the Rust ANalyzer API. The general workflow of this crate is sort of similar to vfs; as you can apply changes to an `AnalysisHost` instance, which is a snapshot at a single time and later derive an `Analysis` data from that host. This analysis instance can be used for executing an specific ide query about the state at that time.
 
 ## Change
-a `Change` describes the change done to the files. this includes the set of file contents from the vfs (which is shared using an `Arc<String>` for sharing from the vfs-notifier thread) and the list of `FileSet`s created after [partitioning](vfs_02.md). it also contains the `CrateGraph` for storing the dependency between the crates (link will be put later). This information provides Rust Analyzer with the ability to handle multi-crate and multi-workspace projects.
+A `Change` describes the change done to the files. This includes the set of file contents from the vfs (which is shared using an `Arc<String>` for sharing from the vfs-notifier thread) and the list of `FileSet`s created after [partitioning](vfs_02.md). It also contains the `CrateGraph` for storing the dependency between the crates (link will be put later). This information provides Rust Analyzer with the ability to handle multi-crate and multi-workspace projects.
 
 ## Analysis
 The `Analysis`struct is a read-only type which can be queried about the current state of the world. It's an **owned** type with a shared reference to the state that is also held by the `AnalysisHost`. But why have these two different types been defined to work with the state reference? First we should take a look at how the main loop works:
