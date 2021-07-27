@@ -7,6 +7,8 @@ The main function does a bunch of stuff:
 * check for the configuration and cargo meta data
 * finally, run the main loop
 
+> NOTE: Throughout this lecture, topics such as handling Cargo checks,metadata and loading Cargo configs are explained, due to their complicated logic and implementation.
+
 ## GlobalState
 The `GlobalState` is the state of Rust Analyzer with is composed of many types, the most important being: 
 * `Vfs` the virtual filesystem
@@ -32,3 +34,19 @@ while let Some(event) = self.next_event(&inbox) {
 }
 ```
 The `next_event` method will block on 4 crossbeam channels to get an event instance. After that, it will be handled by `handle_event` function.
+
+## Events
+There are four types of events in RA:
+``` rust
+enum Event {
+    Lsp(lsp_server::Message),
+    Task(Task),
+    Vfs(vfs::loader::Message),
+    Flycheck(flycheck::Message),
+}
+```
+### Vfs
+As the loader keeps watching for file changes and loads the files, these changes mut be applied to the vfs instance of the global state. An important point is that the main loop applies the vfs changes **in bulk**, meaning that after handling a vfs event, if there are already extra vfs events, they will immediately be handled before **processing changes**.
+
+### LSP
+An LSP Message can either be a `Request`, `Response`, or a `Notification`. Both the server and LSP client can send request and recieve responses. Each request is given an ID and is supposed to be handled by a response with the same ID. A notification is another type of request which does not need a response. They're covered in the next section.
