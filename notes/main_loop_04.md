@@ -17,3 +17,18 @@ the `GlobalState` is the state of Rust Analyzer with is composed of many types, 
 * `memdoc` property, which keeps content of the files whose changes are not saved to the disk, and are handled by the editor
 * `loader` property, which is a handle to the [vfs loader](vfs_02.md)
 the `run` method of this struct will run the main loop.
+
+## Main Loop
+the main loop is basically the following block of code:
+``` rust
+// crates/rust-analyzer/src/main_loop.rs
+while let Some(event) = self.next_event(&inbox) {
+    if let Event::Lsp(lsp_server::Message::Notification(not)) = &event {
+        if not.method == lsp_types::notification::Exit::METHOD {
+            return Ok(());
+        }
+    }
+    self.handle_event(event)?
+}
+```
+the `next_event` method will block on 4 crossbeam channels to get an event instance. after that, it will be handled by `handle_event` function.
