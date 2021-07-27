@@ -1,5 +1,9 @@
 # Summary of ERA04: main loop
 
+> You can watch actual video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bfE_ZVDLHmo/1.jpg)](https://www.youtube.com/watch?v=bfE_ZVDLHmo)
+
 ## RA entry point : main()
 The main function does a bunch of stuff:
 * enable debugging the binary
