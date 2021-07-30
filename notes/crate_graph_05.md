@@ -1,5 +1,9 @@
 # Summary of ERA05: crate graph
 
+> You can watch actual video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/STiKE1ES2fQ/1.jpg)](https://www.youtube.com/watch?v=STiKE1ES2fQ)
+
 ## FileSet
 File sets were previously covered in the [vfs lecture](vfs_02.md).
 
