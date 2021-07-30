@@ -90,3 +90,16 @@ fn print_number () {
 $ rustc executable1.rs --cfg 'my_num="one"'
 ```
 It is cargo that only allows the keys to be `feature`. Note that Rustc also allows flags like `#[cfg(my_flag)]` while cargo restricts you to certain flags like `test`.
+
+### cfg_options
+These are the currently enabled cfg flags.
+
+### potential_cfg_options
+These are potential values for cfg keys; example:
+``` rust
+#[cfg(target_os="???")]
+fn f(){
+
+}
+```
+because RA wants to provide the client with completions about this specific key, it has to store the set of potential key/values.
