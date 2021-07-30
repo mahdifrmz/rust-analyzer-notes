@@ -30,3 +30,27 @@ pub struct CrateData {
 }
 ```
 Each Crate is allocated a 32-bit unique ID which is then mapped to the `CrateData`.
+
+## CrateData
+The properties in this type are not cargo-specific and make sense for all Rust projects with any build system.
+
+### root_file_id
+The root file of the crate (lib.rs or main.rs in case of cargo). `FileId` is the ID allocated to a file by the vfs.
+
+### edition
+The edition of source code.
+``` rust
+pub enum Edition {
+    Edition2015,
+    Edition2018,
+    Edition2021,
+}
+```
+
+### env
+The environment at crate's compile time.
+``` rust
+pub struct Env {
+    entries: FxHashMap<String, String>,
+}
+```
