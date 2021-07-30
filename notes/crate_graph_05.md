@@ -54,3 +54,23 @@ pub struct Env {
     entries: FxHashMap<String, String>,
 }
 ```
+
+## crates naming
+In Rust language itself, crate do not have names. Rustc does not know anything about the name of a crate. All it does is linking crates together:
+```
+rustc executable1.rs --extern library1=library.rlib --edition=2018 && ./executable1
+rustc executable2.rs --extern library2=library.rlib --edition=2018 && ./executable2 
+```
+In the two above commands, the two binary crates use the same library, but they know it with different names. The names used by cargo packages are just cargo-specific and make no sense in context of Rust language proper.
+
+### display_name
+In some cases (like when we're using cargo) our crates might have names. Note that this name is only showed to RA's user and is not used for actual analysis.
+
+### dependency
+This is the most important property. Dependencies are edges of the crate graph. each `Dependency` item consists of a `CrateId` and a `CrateName`, by which the crates know each other.
+``` rust
+pub struct Dependency {
+    pub crate_id: CrateId,
+    pub name: CrateName,
+}
+```
