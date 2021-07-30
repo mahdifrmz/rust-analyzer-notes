@@ -74,3 +74,19 @@ pub struct Dependency {
     pub name: CrateName,
 }
 ```
+
+## Cfg
+Cfg attributes enable conditional compilation which is determined in compile-time. Note that things like `#[cgf(feature="value")]` are not related to cargo only. The configuration at Cargo.toml allow you to introduce features to be used in your source code and later in the build command. But generally Rustc does not care about anything known as feature; what is knows is just `#[cgf(key="valye")]` where `key` can be replaced by any name:
+``` rust
+fn print_number () {
+    #[cfg(my_num="one")]
+    println!("1");
+
+    #[cfg(my_num="two")]
+    println!("2");
+}
+```
+```
+$ rustc executable1.rs --cfg 'my_num="one"'
+```
+It is cargo that only allows the keys to be `feature`. Note that Rustc also allows flags like `#[cfg(my_flag)]` while cargo restricts you to certain flags like `test`.
