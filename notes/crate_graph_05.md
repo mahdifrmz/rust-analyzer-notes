@@ -58,8 +58,8 @@ pub struct Env {
 ## Names
 In Rust language itself, crate do not have names. Rustc does not know anything about the name of a crate. All it does is linking crates together:
 ```
-$ rustc executable1.rs --extern library1=library.rlib --edition=2018 && ./executable1
-$ rustc executable2.rs --extern library2=library.rlib --edition=2018 && ./executable2 
+$ rustc executable1.rs --extern library1=library.rlib --edition=2018
+$ rustc executable2.rs --extern library2=library.rlib --edition=2018 
 ```
 In the two above commands, the two binary crates use the same library, but they know it with different names. The names used by cargo packages are just cargo-specific and make no sense in context of Rust language proper.
 
@@ -102,4 +102,4 @@ fn f(){
 
 }
 ```
-because RA wants to provide the client with completions about this specific key, it has to store the set of potential key/values.
+Because RA wants to provide the client with completions about this specific key, it has to store the set of potential key/values.
