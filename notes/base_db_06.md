@@ -8,3 +8,5 @@ This is a Salsa database with the input `crate_graph` and the query `parse`; and
 
 ## SourceDataBaseExt
 This database and the prevoius one could be just one databse, but in that case HIR knowledge of the source roots would be accessible by the parse query. Now due to the parse query requiring to get file's content, a `FileLoader` is provided to make the parser able to read a file's content by having its path.
+
+> The notes will be expanded in the future
