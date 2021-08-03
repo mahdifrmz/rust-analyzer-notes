@@ -1,5 +1,9 @@
 # Summary of ERA07: syntax
 
+> You can watch actual video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/8jryEJRnPfU/1.jpg)](https://youtu.be/8jryEJRnPfU)
+
 ## Compiler Pipeline
 compiling a source code is divided into multiple stages:
 ```
