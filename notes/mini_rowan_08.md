@@ -6,3 +6,5 @@
 * value-type : In compilers the trees are consistant and nodes have a rigid identity; but in ide the trees need to be flexible due to the incomming refactors.
 * immutable : It's OK for a compiler to mutate the syntax tree (for desugaring, etc) but an ide has to keep the user input and not change the synatx tree.
 * cheaply updatable : Although the tree should not be changed during analysis, again it has to be updated when a refactor occures. it can also be helpfull in case of incremental reparsing.
+* conveniently updatable : the refactor API must be convenient to use.
+* easy to navigate : we must be able to navigate the tree easily, meaning to go from a node to it's children, siblings or parents.
