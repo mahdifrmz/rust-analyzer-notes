@@ -8,3 +8,6 @@
 * cheaply updatable : Although the tree should not be changed during analysis, again it has to be updated when a refactor occures. It can also be helpfull in case of incremental reparsing.
 * conveniently updatable : The refactor API must be convenient to use.
 * easy to navigate : We must be able to navigate the tree easily, meaning to go from a node to it's children, siblings or parents.
+
+## Implementation
+you can view the [actual rowan implemenation](https://github.com/rust-analyzer/rowan) which might seem complex and not really suitable. Afterall, this video is mostly coding and all implementation details are fully explained in the video; leaving me with not much to say in this note:)
