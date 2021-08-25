@@ -1,5 +1,9 @@
 # Summary of ERA08: Mini Rowan
 
+> You can watch the video here:
+
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/n5LDjWIAByM/1.jpg)](https://youtu.be/n5LDjWIAByM)
+
 ## characterisitics of Rowan tree
 * full-fidelity : The trees must be lossless; white spaces, newlines and comments should also be part of the tree
 * resilient and semi-structured : Invalid code also should be represented in the tree
