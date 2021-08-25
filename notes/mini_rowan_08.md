@@ -9,5 +9,8 @@
 * conveniently updatable : The refactor API must be convenient to use.
 * easy to navigate : We must be able to navigate the tree easily, meaning to go from a node to it's children, siblings or parents.
 
+## Green and Red nodes
+The syntax tree is actually composed of two tree: The green tree and the red tree. The green nodes only know about thir children and their lenght, while the red nodes which store a reference to their corresponding green node know about thier parent and their offset in the parent node. 
+
 ## Implementation
-you can view the [actual rowan implemenation](https://github.com/rust-analyzer/rowan) which might seem complex and not really suitable. Afterall, this video is mostly coding and all implementation details are fully explained in the video; leaving me with not much to say in this note:)
+You can view the [actual rowan implemenation](https://github.com/rust-analyzer/rowan) which might seem complex and not really suitable. Afterall, this video is mostly coding and all implementation details are fully explained in the video; leaving me with not much to say in this note:)
